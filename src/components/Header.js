@@ -1,15 +1,18 @@
+import { useContext } from 'react'
+import { UserContext } from '../context/user'
 import ThemedButton from './ThemedButton'
 import DarkModeToggle from './DarkModeToggle'
 import defaultUser from '../data'
 
-function Header({ theme, setTheme, user, setUser }) {
+const Header = ({ theme, setTheme }) => {
+  const { user, setUser } = useContext(UserContext)
+
 	function handleLogin() {
 		if (user) {
 			setUser(null)
 		} else {
 			setUser(defaultUser)
-		}
-	}
+  }}
 
 	return (
 		<header>
@@ -21,7 +24,6 @@ function Header({ theme, setTheme, user, setUser }) {
 				<DarkModeToggle theme={theme} setTheme={setTheme} />
 			</nav>
 		</header>
-	)
-}
+)}
 
 export default Header
